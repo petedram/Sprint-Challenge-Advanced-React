@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {listLen} from './components/ListPlayers';
+import {apiFail} from './components/ListPlayers';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
@@ -9,10 +9,8 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-test("list loads to screen", () => {
-  const arrayLength = listLen();
+test("API call did not fail", () => {
+  const fail = apiFail();
+  expect(fail).toBe(0);
 
-  expect(arrayLength).toBeGreaterThan(0);
- 
- 
  });

@@ -3,8 +3,14 @@ import { useAPI } from '../hooks/useAPI';
 import axios from 'axios';
 
 
-export const listLen = (arrayIn) => {
-    return arrayIn.length
+export const apiFail = (error) => {
+
+    if (error === true) {
+        return 1
+    } else {
+        return 0
+    }
+
 }
 
 
@@ -19,18 +25,22 @@ export default function ListPlayers(){
 
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState([]);
-    const [error, setError] = useState();
+    const [error, setError] = useState(false);
 
+    apiFail(error);
 
     useEffect(() => {
         setLoading(true);
-        axios.get(url).then(r => {
-            setResult(r.data);
-            setLoading(false);
-            console.log('from axios', r.data );
-            listLen(r.data);
-
-        });
+        axios
+            .get(url)
+            .then(r => {
+                setResult(r.data);
+                setLoading(false);
+                console.log('from axios', r.data );
+            })
+            .catch(error => {
+                setError(true);
+            })
     }, [url]);
 
     // useEffect(() => {
