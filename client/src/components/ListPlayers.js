@@ -3,6 +3,11 @@ import { useAPI } from '../hooks/useAPI';
 import axios from 'axios';
 
 
+export const listLen = (arrayIn) => {
+    return arrayIn.length
+}
+
+
 export default function ListPlayers(){
 
     const url = 'http://localhost:5000/api/players';
@@ -16,20 +21,22 @@ export default function ListPlayers(){
     const [result, setResult] = useState([]);
     const [error, setError] = useState();
 
+
     useEffect(() => {
         setLoading(true);
         axios.get(url).then(r => {
             setResult(r.data);
             setLoading(false);
             console.log('from axios', r.data );
+            listLen(r.data);
 
         });
     }, [url]);
 
-    useEffect(() => {
-        console.log('useEffect!!!', result)
-        console.log(result)
-    }, [result]);
+    // useEffect(() => {
+    //     console.log('useEffect!!!', result)
+    //     console.log(result)
+    // }, [result]);
 
 
 
