@@ -6,7 +6,6 @@ import ListPlayers from './components/ListPlayers';
 function App() {
   return (
     <div className="App">
-      <p>Test!</p>
       <ListPlayers />
     </div>
   );
