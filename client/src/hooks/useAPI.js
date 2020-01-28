@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 
 
@@ -36,13 +36,5 @@ apiFail(error);
             })
     }, [url]);
  
-  console.log('result from useAPI return', result);
 
-  return (
-    <ul>
-    {result.map(item => (
-        console.log('from map', item),
-        <li>{item.name} from {item.country} Search Interest {item.searches}</li>
-    ))}
-    </ul>
-  )}
+  return (result)}
